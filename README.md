@@ -1,2 +1,2 @@
 # Auto-Touch-Head-Simulator-
-这是一款火影忍者自动摸头英语
+用于模拟器火影忍者手游自动摸头
