@@ -2,8 +2,9 @@ import time
 import cv2
 import pyautogui
 
-img1='./picture/image1.png'
-img2='./picture/image2.png'
+img1 = './picture/image1.png'
+img2 = './picture/image2.png'
+
 
 def get_xy1_xy2():
     is_found1, is_found2 = True, True
@@ -20,6 +21,10 @@ def get_xy1_xy2():
     except pyautogui.ImageNotFoundException:
         print("没找到xy1. . .")
         is_found1 = False
+
+        
+    print("停止0.2s")
+    time.sleep(0.2)
 
     # 记录并返回摸头表情位置
     try:
@@ -50,15 +55,21 @@ def start(xy1, xy2):
 
 
 def routine():
-    # 封装
-    xy1, xy2 = get_xy1_xy2()
+    # 封装OK
+    try:
+        xy1, xy2 = get_xy1_xy2()
+    except TypeError:
+        return 1
     start(xy1, xy2)
     return 0
 
+
 while True:
-    key=input("输入OK开始摸头 输入EXIT以结束进程")
+    key = input("输入OK开始摸头 输入EXIT以结束进程")
     if key == 'OK':
-        routine()
+        while True:
+            if (routine() == 1):
+                break
     elif key == 'EXIT':
         print("无法退出-火影不是避风港,怕阴别来决斗场")
     else:
